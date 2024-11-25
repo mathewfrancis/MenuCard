@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel Cuisine</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        
+        .menu-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .hotel-name {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .category-buttons {
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 50px;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category-btn.active {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .category {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        .category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 15px;
+        }
+        
+        .category[data-category="appetizers"]::before {
+            background-image: url('https://images.unsplash.com/photo-1541014741259-de529411b96a');
+        }
+        
+        .category[data-category="main-course"]::before {
+            background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947');
+        }
+        
+        .category[data-category="desserts"]::before {
+            background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e');
+        }
+        
+        .category[data-category="beverages"]::before {
+            background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e');
+        }
+        
+        .category.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .menu-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .price {
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .bestseller {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 0.7em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-left: 10px;
+            display: inline-block;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Add food icons */
+        .category-title::before {
+            font-family: "Font Awesome 6 Free";
+            margin-right: 10px;
+            font-weight: 900;
+        }
+        
+        .category-title.appetizers::before {
+            content: "\f805"; /* utensils */
+        }
+        
+        .category-title.main-course::before {
+            content: "\f2e7"; /* plate */
+        }
+        
+        .category-title.desserts::before {
+            content: "\f810"; /* cake */
+        }
+        
+        .category-title.beverages::before {
+            content: "\f561"; /* cocktail */
+        }
+        
+        .item-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .item-text {
+            flex: 1;
+        }
+        
+        .item-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Enhanced header styling */
+        .header {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+        }
+        
+        .header * {
+            position: relative;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-card">
+            <div class="header">
+                <h1 class="hotel-name">Grand Hotel Cuisine</h1>
+                <p class="text-muted">Experience the finest dining</p>
+            </div>
+
+            <div class="category-buttons text-center">
+                <button class="category-btn active" data-category="all">All Menu</button>
+                <button class="category-btn" data-category="appetizers">Appetizers</button>
+                <button class="category-btn" data-category="main-course">Main Course</button>
+                <button class="category-btn" data-category="desserts">Desserts</button>
+                <button class="category-btn" data-category="beverages">Beverages</button>
+            </div>
+
+            <div class="category" data-category="appetizers">
+                <h2 class="category-title appetizers">Appetizers</h2>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Classic Caesar Salad</span>
+                            <p class="item-description">Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing</p>
+                        </div>
+                    </div>
+                    <span class="price">₹12</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                            <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
+                        </div>
+                    </div>
+                    <span class="price">₹16</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Soup of the Day</span>
+                            <p class="item-description">A daily-changing soup made with fresh ingredients</p>
+                        </div>
+                    </div>
+                    <span class="price">₹8</span>
+                </div>
+            </div>
+
+            <div class="category" data-category="main-course">
+                <h2 class="category-title main-course">Main Course</h2>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                            <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
+                        </div>
+                    </div>
+                    <span class="price">₹28</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Beef Tenderloin</span>
+                            <p class="item-description">A tender and juicy beef tenderloin steak</p>
+                        </div>
+                    </div>
+                    <span class="price">₹32</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Chicken Marsala</span>
+                            <p class="item-description">Chicken breasts sautéed in a creamy Marsala wine sauce</p>
+                        </div>
+                    </div>
+                    <span class="price">₹24</span>
+                </div>
+            </div>
+
+            <div class="category" data-category="desserts">
+                <h2 class="category-title desserts">Desserts</h2>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                            <p class="item-description">A rich and decadent chocolate lava cake</p>
+                        </div>
+                    </div>
+                    <span class="price">₹10</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Crème Brûlée</span>
+                            <p class="item-description">A classic French dessert with a burnt sugar crust</p>
+                        </div>
+                    </div>
+                    <span class="price">₹9</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">New York Cheesecake</span>
+                            <p class="item-description">A creamy and rich New York-style cheesecake</p>
+                        </div>
+                    </div>
+                    <span class="price">₹8</span>
+                </div>
+            </div>
+
+            <div class="category" data-category="beverages">
+                <h2 class="category-title beverages">Beverages</h2>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">House Wine (Glass)</span>
+                            <p class="item-description">A glass of red or white wine</p>
+                        </div>
+                    </div>
+                    <span class="price">₹8</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                            <p class="item-description">A handcrafted craft beer</p>
+                        </div>
+                    </div>
+                    <span class="price">₹7</span>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
+                        <div class="item-text">
+                            <span class="item-name">Fresh Juice</span>
+                            <p class="item-description">A refreshing fruit juice</p>
+                        </div>
+                    </div>
+                    <span class="price">₹5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Your custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
