@@ -1,3 +1,24 @@
+function setDeviceClass() {
+    const width = window.innerWidth;
+    const body = document.body;
+    
+    // Remove existing device classes
+    body.classList.remove('device-mobile', 'device-tablet', 'device-desktop');
+    
+    // Add appropriate device class
+    if (width <= 576) {
+        body.classList.add('device-mobile');
+    } else if (width <= 768) {
+        body.classList.add('device-tablet');
+    } else {
+        body.classList.add('device-desktop');
+    }
+}
+
+// Check on page load and window resize
+window.addEventListener('resize', setDeviceClass);
+document.addEventListener('DOMContentLoaded', setDeviceClass);
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Script loaded successfully!');
     
