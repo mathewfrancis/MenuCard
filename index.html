@@ -1060,6 +1060,43 @@
             font-size: 0.7em;
             line-height: 1.2;
         }
+
+        /* Mobile-specific price group adjustments */
+        .device-mobile .price-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            min-width: auto;
+            margin-left: 6px;
+        }
+
+        .device-mobile .price {
+            font-size: 0.75em;
+        }
+
+        .device-mobile .quantity-sizes {
+            font-size: 0.6em;
+            margin-left: 4px;
+        }
+
+        /* Ensure price and quantity stay on same line */
+        .device-mobile .item-top-row {
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+
+        .device-mobile .item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Prevent text overflow */
+        .device-mobile .item-name {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
     </style>
 </head>
 <body>
