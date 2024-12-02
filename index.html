@@ -573,6 +573,121 @@
                 font-size: 7px;
             }
         }
+
+        /* Enhanced Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-item {
+                padding: 12px 10px;
+            }
+
+            .item-details {
+                gap: 10px;
+            }
+
+            .item-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .item-text {
+                flex: 1;
+                min-width: 0; /* Prevents text overflow */
+            }
+
+            .item-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+
+            .item-name {
+                font-size: 0.95em;
+                line-height: 1.3;
+            }
+
+            .bestseller {
+                font-size: 0.65em;
+                padding: 3px 8px;
+                margin-left: 6px;
+            }
+
+            .item-description {
+                font-size: 0.8em;
+                margin-top: 4px;
+                line-height: 1.4;
+            }
+
+            .price-group {
+                text-align: right;
+                min-width: auto;
+                margin-left: 8px;
+            }
+
+            .price {
+                font-size: 0.9em;
+                white-space: nowrap;
+            }
+
+            .quantity-sizes {
+                font-size: 0.7em;
+            }
+
+            .veg-badge, .non-veg-badge {
+                min-width: 14px;
+                height: 14px;
+                flex-shrink: 0; /* Prevents badge from shrinking */
+                margin-top: 2px; /* Aligns with text */
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 576px) {
+            .menu-item {
+                padding: 10px 8px;
+            }
+
+            .item-details {
+                gap: 8px;
+            }
+
+            .item-image {
+                width: 50px;
+                height: 50px;
+            }
+
+            .item-name {
+                font-size: 0.9em;
+            }
+
+            .bestseller {
+                font-size: 0.6em;
+                padding: 2px 6px;
+            }
+
+            .item-description {
+                font-size: 0.75em;
+                margin-top: 3px;
+            }
+
+            .price {
+                font-size: 0.85em;
+            }
+
+            .quantity-sizes {
+                font-size: 0.65em;
+            }
+
+            .veg-badge, .non-veg-badge {
+                min-width: 12px;
+                height: 12px;
+                border-width: 1.5px;
+            }
+
+            .veg-badge i, .non-veg-badge i {
+                font-size: 6px;
+            }
+        }
     </style>
 </head>
 <body>
