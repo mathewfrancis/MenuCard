@@ -1159,6 +1159,53 @@
         .device-desktop .quantity-sizes {
             font-size: 0.85em;
         }
+
+        .item-bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .bestseller {
+            display: inline-block;
+            font-size: 0.7em;
+            padding: 3px 8px;
+            background-color: #ff3860;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Mobile specific styles */
+        .device-mobile .item-bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .device-mobile .bestseller {
+            font-size: 0.65em;
+            padding: 2px 6px;
+        }
+
+        .device-mobile .price-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .device-mobile .price {
+            font-size: 1em;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .device-mobile .quantity-sizes {
+            font-size: 0.75em;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -1183,7 +1230,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1196,6 +1242,8 @@
                                 <p class="item-description">Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1206,7 +1254,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1219,6 +1266,8 @@
                                 <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1229,7 +1278,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1242,6 +1290,8 @@
                                 <p class="item-description">A daily-changing soup made with fresh ingredients</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1256,7 +1306,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1269,6 +1318,8 @@
                                 <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹50 | ₹90 | ₹140</span>
@@ -1280,7 +1331,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1293,6 +1343,8 @@
                                 <p class="item-description">A tender and juicy beef tenderloin steak</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹50 | ₹90 | ₹140</span>
@@ -1304,7 +1356,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1317,6 +1368,8 @@
                                 <p class="item-description">Chicken breasts sautéed in a creamy Marsala wine sauce</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹50 | ₹90 | ₹140</span>
@@ -1332,7 +1385,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1345,6 +1397,8 @@
                                 <p class="item-description">A rich and decadent chocolate lava cake</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1355,7 +1409,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1368,6 +1421,8 @@
                                 <p class="item-description">A classic French dessert with a burnt sugar crust</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1378,7 +1433,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1391,6 +1445,8 @@
                                 <p class="item-description">A creamy and rich New York-style cheesecake</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1405,7 +1461,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1418,6 +1473,8 @@
                                 <p class="item-description">A glass of red or white wine</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1428,7 +1485,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1441,6 +1497,8 @@
                                 <p class="item-description">A handcrafted craft beer</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
@@ -1451,7 +1509,6 @@
                     <div class="item-top-row">
                         <div class="item-details">
                             <div class="image-container">
-                                <span class="bestseller">Bestseller</span>
                                 <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
                             </div>
                             <div class="item-content">
@@ -1464,6 +1521,8 @@
                                 <p class="item-description">A refreshing fruit juice</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="item-bottom-row">
                         <span class="bestseller">Bestseller</span>
                         <div class="price-group">
                             <span class="price">₹140</span>
