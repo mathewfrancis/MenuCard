@@ -1108,68 +1108,60 @@
 
         .device-mobile .item-details {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px; /* Space between image and text */
             width: 100%;
-        }
-
-        .device-mobile .item-image {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .device-mobile .item-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px; /* Space between name and description */
-        }
-
-        .device-mobile .item-header {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .device-mobile .item-name {
-            font-size: 0.85em;
-            line-height: 1.3;
-            font-weight: 500;
-            color: #2c3e50;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            hyphens: auto;
+            position: relative;
         }
 
         .device-mobile .bestseller {
-            font-size: 0.55em;
-            padding: 2px 4px;
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 0.7em;
+            padding: 3px 8px;
             background-color: #ff3860;
             color: white;
             border-radius: 4px;
-            margin-top: 2px;
-        }
-
-        .device-mobile .item-description {
-            font-size: 0.75em;
-            color: #666;
-            line-height: 1.2;
+            z-index: 1;
         }
 
         .device-mobile .price-group {
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.75em;
-            margin-top: 4px; /* Align with text */
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .device-mobile .price {
+            font-size: 1em; /* Increased font size */
+            font-weight: 500;
+            color: #2c3e50;
         }
 
         .device-mobile .quantity-sizes {
-            font-size: 0.65em;
-            color: #888;
+            font-size: 0.75em;
+            color: #666;
+        }
+
+        /* Tablet adjustments */
+        .device-tablet .price {
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        .device-tablet .quantity-sizes {
+            font-size: 0.8em;
+        }
+
+        /* Desktop styles */
+        .device-desktop .price {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .device-desktop .quantity-sizes {
+            font-size: 0.85em;
         }
     </style>
 </head>
