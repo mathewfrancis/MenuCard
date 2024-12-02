@@ -899,6 +899,59 @@
                 padding: 2px 4px;
             }
         }
+
+        .image-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .bestseller {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff3860;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 500;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .item-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .bestseller {
+                font-size: 0.6em;
+                padding: 2px 6px;
+                top: -6px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .item-image {
+                width: 50px;
+                height: 50px;
+            }
+
+            .bestseller {
+                font-size: 0.55em;
+                padding: 2px 4px;
+                top: -5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -922,7 +975,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="veg-badge">
@@ -941,13 +997,16 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
                                         <i class="fas fa-circle"></i>
                                     </span>
-                                    <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                                    <span class="item-name">Garlic Butter Shrimp</span>
                                 </div>
                                 <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
                             </div>
@@ -960,7 +1019,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="veg-badge">
@@ -983,13 +1045,16 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
                                         <i class="fas fa-circle"></i>
                                     </span>
-                                    <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                                    <span class="item-name">Grilled Salmon</span>
                                 </div>
                                 <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
                             </div>
@@ -1003,7 +1068,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
@@ -1023,7 +1091,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
@@ -1047,13 +1118,16 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
                                         <i class="fas fa-circle"></i>
                                     </span>
-                                    <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                                    <span class="item-name">Chocolate Lava Cake</span>
                                 </div>
                                 <p class="item-description">A rich and decadent chocolate lava cake</p>
                             </div>
@@ -1066,7 +1140,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
@@ -1085,7 +1162,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
@@ -1108,7 +1188,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
@@ -1127,13 +1210,16 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="non-veg-badge">
                                         <i class="fas fa-circle"></i>
                                     </span>
-                                    <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                                    <span class="item-name">Craft Beer</span>
                                 </div>
                                 <p class="item-description">A handcrafted craft beer</p>
                             </div>
@@ -1146,7 +1232,10 @@
                 <div class="menu-item">
                     <div class="item-top-row">
                         <div class="item-details">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
+                            <div class="image-container">
+                                <span class="bestseller">Bestseller</span>
+                                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
+                            </div>
                             <div class="item-content">
                                 <div class="item-header">
                                     <span class="veg-badge">
