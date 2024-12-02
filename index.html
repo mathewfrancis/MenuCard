@@ -16,38 +16,41 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 40px 0;
+            padding: 20px 0;
         }
         
         .menu-card {
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
             background-color: white;
-            padding: 40px;
+            padding: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border-radius: 20px;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 2px solid #f0f0f0;
         }
         
         .hotel-name {
             font-family: 'Playfair Display', serif;
             color: #2c3e50;
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 10px;
         }
         
         .category-buttons {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .category-btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             margin: 5px;
             border: none;
             border-radius: 50px;
@@ -55,6 +58,7 @@
             color: #2c3e50;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.9em;
         }
         
         .category-btn:hover {
@@ -72,7 +76,9 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 15px;
         }
         
         .category::before {
@@ -113,8 +119,8 @@
         .category-title {
             font-family: 'Playfair Display', serif;
             color: #2c3e50;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: 1.6em;
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
@@ -145,6 +151,8 @@
             color: #2c3e50;
             font-weight: 600;
             font-size: 1.1em;
+            margin-left: 15px;
+            white-space: nowrap;
         }
         
         .bestseller {
@@ -193,6 +201,7 @@
             align-items: center;
             gap: 15px;
             flex: 1;
+            min-width: 0;
         }
         
         .item-image {
@@ -218,9 +227,9 @@
             background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
             background-size: cover;
             background-position: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             border-radius: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             position: relative;
         }
         
@@ -238,6 +247,331 @@
         .header * {
             position: relative;
             color: white !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .menu-card {
+                padding: 15px;
+            }
+
+            .hotel-name {
+                font-size: 2em;
+            }
+
+            .category-btn {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+
+            .item-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .item-name {
+                font-size: 1em;
+            }
+
+            .price {
+                font-size: 1em;
+            }
+
+            .item-description {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-card {
+                padding: 10px;
+            }
+
+            .hotel-name {
+                font-size: 1.8em;
+            }
+
+            .category-btn {
+                font-size: 0.7em;
+                padding: 5px 10px;
+            }
+
+            .item-image {
+                width: 50px;
+                height: 50px;
+            }
+
+            .item-name {
+                font-size: 0.9em;
+            }
+
+            .price {
+                font-size: 0.9em;
+            }
+
+            .item-description {
+                font-size: 0.75em;
+            }
+        }
+
+        .quantity-sizes {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .floating-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .floating-button {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-button:hover {
+            background-color: #34495e;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        }
+
+        .floating-content {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background-color: white;
+            border-radius: 15px;
+            padding: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 200px;
+            transform-origin: bottom right;
+            animation: popIn 0.3s ease-out forwards;
+        }
+
+        .floating-content.show {
+            display: flex;
+        }
+
+        .float-category-btn {
+            padding: 10px 16px;
+            border: none;
+            background: none;
+            text-align: left;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .float-category-btn:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .float-category-btn.active {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        /* Add icons before each category button */
+        .float-category-btn::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.9em;
+        }
+
+        .float-category-btn[data-category="all"]::before {
+            content: "\f0c9"; /* bars icon */
+        }
+
+        .float-category-btn[data-category="appetizers"]::before {
+            content: "\f805"; /* utensils icon */
+        }
+
+        .float-category-btn[data-category="main-course"]::before {
+            content: "\f2e7"; /* plate icon */
+        }
+
+        .float-category-btn[data-category="desserts"]::before {
+            content: "\f810"; /* cake icon */
+        }
+
+        .float-category-btn[data-category="beverages"]::before {
+            content: "\f561"; /* cocktail icon */
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .floating-button {
+                width: 48px;
+                height: 48px;
+                font-size: 1em;
+            }
+
+            .floating-content {
+                min-width: 180px;
+                bottom: 60px;
+            }
+
+            .float-category-btn {
+                padding: 8px 14px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Image Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding: 20px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #bbb;
+        }
+
+        /* Make item images clickable */
+        .item-image {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .item-image:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95%;
+                max-height: 80vh;
+            }
+
+            .close-modal {
+                right: 15px;
+                top: 10px;
+                font-size: 30px;
+            }
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .veg-badge, .non-veg-badge {
+            min-width: 16px;
+            height: 16px;
+            border: 2px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .veg-badge {
+            border-color: #48c774;
+        }
+
+        .non-veg-badge {
+            border-color: #ff3860;
+        }
+
+        .veg-badge i, .non-veg-badge i {
+            font-size: 8px;
+        }
+
+        .veg-badge i {
+            color: #48c774;
+        }
+
+        .non-veg-badge i {
+            color: #ff3860;
+        }
+
+        @media (max-width: 576px) {
+            .veg-badge, .non-veg-badge {
+                min-width: 14px;
+                height: 14px;
+            }
+
+            .veg-badge i, .non-veg-badge i {
+                font-size: 7px;
+            }
         }
     </style>
 </head>
@@ -263,31 +597,52 @@
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Classic Caesar Salad</span>
+                            <div class="item-header">
+                                <span class="veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Classic Caesar Salad</span>
+                            </div>
                             <p class="item-description">Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing</p>
                         </div>
                     </div>
-                    <span class="price">₹12</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                            </div>
                             <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
                         </div>
                     </div>
-                    <span class="price">₹16</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Soup of the Day</span>
+                            <div class="item-header">
+                                <span class="veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Soup of the Day</span>
+                            </div>
                             <p class="item-description">A daily-changing soup made with fresh ingredients</p>
                         </div>
                     </div>
-                    <span class="price">₹8</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
             </div>
 
@@ -297,31 +652,55 @@
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                            </div>
                             <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
                         </div>
                     </div>
-                    <span class="price">₹28</span>
+                    <div class="price-group">
+                        <span class="price">₹50 | ₹90 | ₹140</span>
+                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Beef Tenderloin</span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Beef Tenderloin</span>
+                            </div>
                             <p class="item-description">A tender and juicy beef tenderloin steak</p>
                         </div>
                     </div>
-                    <span class="price">₹32</span>
+                    <div class="price-group">
+                        <span class="price">₹50 | ₹90 | ₹140</span>
+                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Chicken Marsala</span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Chicken Marsala</span>
+                            </div>
                             <p class="item-description">Chicken breasts sautéed in a creamy Marsala wine sauce</p>
                         </div>
                     </div>
-                    <span class="price">₹24</span>
+                    <div class="price-group">
+                        <span class="price">₹50 | ₹90 | ₹140</span>
+                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                    </div>
                 </div>
             </div>
 
@@ -331,31 +710,52 @@
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                            </div>
                             <p class="item-description">A rich and decadent chocolate lava cake</p>
                         </div>
                     </div>
-                    <span class="price">₹10</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Crème Brûlée</span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Crème Brûlée</span>
+                            </div>
                             <p class="item-description">A classic French dessert with a burnt sugar crust</p>
                         </div>
                     </div>
-                    <span class="price">₹9</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">New York Cheesecake</span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">New York Cheesecake</span>
+                            </div>
                             <p class="item-description">A creamy and rich New York-style cheesecake</p>
                         </div>
                     </div>
-                    <span class="price">₹8</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
             </div>
 
@@ -365,31 +765,52 @@
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">House Wine (Glass)</span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">House Wine (Glass)</span>
+                            </div>
                             <p class="item-description">A glass of red or white wine</p>
                         </div>
                     </div>
-                    <span class="price">₹8</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                            <div class="item-header">
+                                <span class="non-veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                            </div>
                             <p class="item-description">A handcrafted craft beer</p>
                         </div>
                     </div>
-                    <span class="price">₹7</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="item-details">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
                         <div class="item-text">
-                            <span class="item-name">Fresh Juice</span>
+                            <div class="item-header">
+                                <span class="veg-badge">
+                                    <i class="fas fa-circle"></i>
+                                </span>
+                                <span class="item-name">Fresh Juice</span>
+                            </div>
                             <p class="item-description">A refreshing fruit juice</p>
                         </div>
                     </div>
-                    <span class="price">₹5</span>
+                    <div class="price-group">
+                        <span class="price">₹140</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -399,5 +820,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Your custom JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Add this right before the closing </body> tag, AFTER your script.js include -->
+    <div class="floating-menu">
+        <button class="floating-button" id="categoryButton">
+            <i class="fas fa-utensils"></i>
+        </button>
+        <div class="floating-content">
+            <button class="float-category-btn active" data-category="all">All Menu</button>
+            <button class="float-category-btn" data-category="appetizers">Appetizers</button>
+            <button class="float-category-btn" data-category="main-course">Main Course</button>
+            <button class="float-category-btn" data-category="desserts">Desserts</button>
+            <button class="float-category-btn" data-category="beverages">Beverages</button>
+        </div>
+    </div>
+
+    <!-- Add this right before the closing </body> tag -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 </body>
 </html>
