@@ -131,14 +131,13 @@
             padding: 15px;
             margin: 10px 0;
             border-radius: 10px;
-            transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.8);
         }
         
         .item-top-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
             margin-bottom: 8px;
         }
@@ -146,27 +145,41 @@
         .item-details {
             display: flex;
             gap: 15px;
-            width: 100%;
+            flex: 1;
+        }
+        
+        .item-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         .item-header {
             display: flex;
             align-items: center;
             gap: 6px;
-            flex: 1;
         }
         
         .item-description {
-            padding-left: 95px;
-            width: 100%;
+            text-align: left;
             font-size: 0.9em;
             color: #666;
             margin-top: 5px;
+            width: 100%;
         }
         
-        .menu-item:hover {
-            background-color: #f8f9fa;
-            transform: translateX(5px);
+        .price-group {
+            text-align: right;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .item-name {
@@ -222,6 +235,14 @@
         
         .category-title.beverages::before {
             content: "\f561"; /* cocktail */
+        }
+        
+        .item-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 0;
         }
         
         .item-image {
@@ -599,35 +620,61 @@
                 padding: 12px 10px;
             }
 
-            .item-top-row {
-                margin-bottom: 6px;
+            .item-details {
+                gap: 10px;
+            }
+
+            .item-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .item-text {
+                flex: 1;
+                min-width: 0;
             }
 
             .item-header {
-                gap: 4px;
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap; /* Prevent wrapping */
+                gap: 6px;
             }
 
             .item-name {
-                font-size: 0.85em;
-                flex: 1;
+                font-size: 0.85em; /* Smaller font */
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 150px; /* Adjust based on your needs */
             }
 
             .bestseller {
                 font-size: 0.6em;
                 padding: 2px 6px;
                 margin-left: 4px;
+                white-space: nowrap;
+            }
+
+            .item-description {
+                font-size: 0.75em;
+                margin-top: 4px;
+                line-height: 1.3;
             }
 
             .price-group {
                 text-align: right;
-                min-width: 85px;
-                margin-left: 8px;
+                min-width: 85px; /* Fixed width for price group */
             }
 
-            .item-description {
-                padding-left: 75px;
-                font-size: 0.75em;
-                line-height: 1.3;
+            .price {
+                font-size: 0.8em;
+                white-space: nowrap;
+            }
+
+            .quantity-sizes {
+                font-size: 0.65em;
+                white-space: nowrap;
             }
         }
 
@@ -637,8 +684,18 @@
                 padding: 8px 6px;
             }
 
+            .item-details {
+                gap: 8px;
+            }
+
+            .item-image {
+                width: 50px;
+                height: 50px;
+            }
+
             .item-name {
                 font-size: 0.8em;
+                max-width: 120px; /* Smaller max-width for extra small devices */
             }
 
             .bestseller {
@@ -646,14 +703,26 @@
                 padding: 2px 4px;
             }
 
-            .price-group {
-                min-width: 75px;
-            }
-
             .item-description {
-                padding-left: 65px;
                 font-size: 0.7em;
                 line-height: 1.2;
+            }
+
+            .price {
+                font-size: 0.75em;
+            }
+
+            .quantity-sizes {
+                font-size: 0.6em;
+            }
+
+            .price-group {
+                min-width: 75px; /* Smaller fixed width for extra small devices */
+            }
+
+            .veg-badge, .non-veg-badge {
+                min-width: 12px;
+                height: 12px;
             }
         }
 
@@ -690,54 +759,60 @@
             <div class="category" data-category="appetizers">
                 <h2 class="category-title appetizers">Appetizers</h2>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Classic Caesar Salad</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1580013759032-c96505e24c1f" alt="Caesar Salad" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Classic Caesar Salad</span>
+                                </div>
+                                <p class="item-description">Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing</p>
                             </div>
-                            <p class="item-description">Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Garlic Shrimp" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Garlic Butter Shrimp<span class="bestseller">Bestseller</span></span>
+                                </div>
+                                <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
                             </div>
-                            <p class="item-description">Succulent shrimp sautéed in garlic butter sauce with fresh herbs</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Soup of the Day</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Soup" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Soup of the Day</span>
+                                </div>
+                                <p class="item-description">A daily-changing soup made with fresh ingredients</p>
                             </div>
-                            <p class="item-description">A daily-changing soup made with fresh ingredients</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -745,57 +820,63 @@
             <div class="category" data-category="main-course">
                 <h2 class="category-title main-course">Main Course</h2>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Grilled Salmon" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Grilled Salmon<span class="bestseller">Bestseller</span></span>
+                                </div>
+                                <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
                             </div>
-                            <p class="item-description">Grilled salmon fillet with a hint of lemon and dill</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹50 | ₹90 | ₹140</span>
-                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                        <div class="price-group">
+                            <span class="price">₹50 | ₹90 | ₹140</span>
+                            <div class="quantity-sizes">Qtr | Half | Full</div>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Beef Tenderloin</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Beef Tenderloin" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Beef Tenderloin</span>
+                                </div>
+                                <p class="item-description">A tender and juicy beef tenderloin steak</p>
                             </div>
-                            <p class="item-description">A tender and juicy beef tenderloin steak</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹50 | ₹90 | ₹140</span>
-                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                        <div class="price-group">
+                            <span class="price">₹50 | ₹90 | ₹140</span>
+                            <div class="quantity-sizes">Qtr | Half | Full</div>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Chicken Marsala</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chicken Marsala" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Chicken Marsala</span>
+                                </div>
+                                <p class="item-description">Chicken breasts sautéed in a creamy Marsala wine sauce</p>
                             </div>
-                            <p class="item-description">Chicken breasts sautéed in a creamy Marsala wine sauce</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹50 | ₹90 | ₹140</span>
-                        <div class="quantity-sizes">Qtr | Half | Full</div>
+                        <div class="price-group">
+                            <span class="price">₹50 | ₹90 | ₹140</span>
+                            <div class="quantity-sizes">Qtr | Half | Full</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -803,54 +884,60 @@
             <div class="category" data-category="desserts">
                 <h2 class="category-title desserts">Desserts</h2>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Chocolate Lava Cake" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Chocolate Lava Cake<span class="bestseller">Bestseller</span></span>
+                                </div>
+                                <p class="item-description">A rich and decadent chocolate lava cake</p>
                             </div>
-                            <p class="item-description">A rich and decadent chocolate lava cake</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Crème Brûlée</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Crème Brûlée" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Crème Brûlée</span>
+                                </div>
+                                <p class="item-description">A classic French dessert with a burnt sugar crust</p>
                             </div>
-                            <p class="item-description">A classic French dessert with a burnt sugar crust</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">New York Cheesecake</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="New York Cheesecake" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">New York Cheesecake</span>
+                                </div>
+                                <p class="item-description">A creamy and rich New York-style cheesecake</p>
                             </div>
-                            <p class="item-description">A creamy and rich New York-style cheesecake</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -858,54 +945,60 @@
             <div class="category" data-category="beverages">
                 <h2 class="category-title beverages">Beverages</h2>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">House Wine (Glass)</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="House Wine" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">House Wine (Glass)</span>
+                                </div>
+                                <p class="item-description">A glass of red or white wine</p>
                             </div>
-                            <p class="item-description">A glass of red or white wine</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="non-veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Craft Beer" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="non-veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Craft Beer<span class="bestseller">Bestseller</span></span>
+                                </div>
+                                <p class="item-description">A handcrafted craft beer</p>
                             </div>
-                            <p class="item-description">A handcrafted craft beer</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-details">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
-                        <div class="item-text">
-                            <div class="item-header">
-                                <span class="veg-badge">
-                                    <i class="fas fa-circle"></i>
-                                </span>
-                                <span class="item-name">Fresh Juice</span>
+                    <div class="item-top-row">
+                        <div class="item-details">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641" alt="Fresh Juice" class="item-image">
+                            <div class="item-content">
+                                <div class="item-header">
+                                    <span class="veg-badge">
+                                        <i class="fas fa-circle"></i>
+                                    </span>
+                                    <span class="item-name">Fresh Juice</span>
+                                </div>
+                                <p class="item-description">A refreshing fruit juice</p>
                             </div>
-                            <p class="item-description">A refreshing fruit juice</p>
                         </div>
-                    </div>
-                    <div class="price-group">
-                        <span class="price">₹140</span>
+                        <div class="price-group">
+                            <span class="price">₹140</span>
+                        </div>
                     </div>
                 </div>
             </div>
